@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Chapter 11: Introduction to Deep Learning}{3}{}%
+\contentsline {subsection}{\numberline {1.1}What is deep learning and why now?}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Perceptron - The first neural network}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Components of a deep learning system}{3}{}%
+\contentsline {subsection}{\numberline {1.4}Linear layers and activation functions}{4}{}%
+\contentsline {subsubsection}{\numberline {1.4.1}Linear Transformations (In hidden layers)}{4}{}%
+\contentsline {subsubsection}{\numberline {1.4.2}Intermediate Activation Functions (In hidden layers)}{4}{}%
+\contentsline {subsubsection}{\numberline {1.4.3}Output Activation Functions (In output layer)}{4}{}%
+\contentsline {subsubsection}{\numberline {1.4.4}Loss function}{5}{}%
+\contentsline {subsection}{\numberline {1.5}Gradient descent}{5}{}%
+\contentsline {subsubsection}{\numberline {1.5.1}Forward Computation (Forward Propagation)}{5}{}%
+\contentsline {subsubsection}{\numberline {1.5.2}Backward Computation (Backward Propagation)}{6}{}%
+\contentsline {subsubsection}{\numberline {1.5.3}Gradient and its Importance}{6}{}%

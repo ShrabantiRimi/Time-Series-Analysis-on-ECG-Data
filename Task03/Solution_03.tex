@@ -1,0 +1,238 @@
+\documentclass{article}
+\usepackage{listings} 
+
+% Global settings for listings
+\lstset{
+    basicstyle=\footnotesize\ttfamily, % Use a small typewriter font
+    breaklines=true,                    % Automatic line breaking
+    breakatwhitespace=false,            % Break lines not only at whitespace
+    frame=single,                       % Frame around the code
+    framesep=2pt,                       % Distance between frame and code
+    framerule=0.5pt                     % Width of the frame
+}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\begin{document}
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{HIS Project - TSA}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Task 03} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+		Alberto Mejia Diez \\
+		}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Chapter 01 Summary}
+
+\subsection{Introduction}
+This book serves as an advanced guide for data scientists and ML engineers to deepen their skills in time series analysis, a crucial and often overlooked aspect of ML. The book aims to progress beyond traditional methods such as ARIMA to the latest ML techniques, addressing the growing complexity and volume of business-related time series data.
+
+\subsection{What is a Time Series?}
+A time series is a sequence of observations recorded over time. Examples include the number of chocolate bars consumed over a month or monthly weight measurements. Time series can reveal relationships and trends, such as the correlation between chocolate consumption and weight changes, and can extend to other domains like stock prices and climate measurements.
+
+\subsection{Types of Time Series}
+The book distinguishes between regular time series with fixed time intervals and irregular ones without such consistency. Regular time series examples include hourly or monthly data points, while irregular ones could be patient lab test readings that occur sporadically.
+
+\subsection{Applications of Time Series Analysis}
+Three main applications are discussed: forecasting future values, classifying time series data (e.g., normal vs. abnormal EKG readings), and deriving causal inferences from time series to understand dynamics and relationships.
+
+\subsection{Data-Generating Process (DGP)}
+The DGP refers to the underlying mechanism that produces a time series, which is often stochastic and complex. Accurate forecasting hinges on closely approximating this DGP with a mathematical model.
+
+\subsection{Synthetic Time Series Generation}
+The book delves into generating synthetic time series by combining fundamental components such as noise and signals to simulate real-world data complexity. Techniques for creating white and red noise processes, cyclical or seasonal signals, and autoregressive signals are explained.
+
+\subsection{Stationary vs. Non-Stationary Time Series}
+Stationary time series have constant mean and variance over time, while non-stationary series display changes in these statistical properties due to trends or varying variance (heteroscedasticity), which complicates their analysis.
+
+\subsection{Forecastability of Time Series}
+Forecastability is dependent on understanding the DGP, the amount of historical data, and the presence of repeating patterns. The book categorizes time series predictability and discusses factors that influence it, such as the high predictability of tides compared to the randomness of lottery numbers or the volatility of stock prices.
+
+\subsection{Forecasting Terminology}
+The terminology section introduces concepts like multivariate forecasting, explanatory forecasting, backtesting, and forecast combination. It explains the role of in-sample and out-sample data, as well as exogenous and endogenous variables in the context of time series forecasting.
+
+\section{Predicatbility}
+The predictability of a time series is influenced by several factors:
+
+\begin{itemize}
+  \item \textbf{Understanding the Data-Generating Process (DGP):} A thorough understanding of the mechanisms that generate the time series data leads to better forecasting because the models can approximate the actual process more closely.
+  \item \textbf{Amount of Data:} Access to a large volume of historical data improves predictability by revealing underlying trends, cycles, and variabilities.
+  \item \textbf{Repeating Patterns:} Predictability is higher when the time series exhibits clear and consistent patterns that repeat over time.
+  \item \textbf{Type of Data:} The inherent nature of the time series affects its predictability. Series influenced by well-understood phenomena (like tides) are more predictable than those with high randomness (like lottery numbers).
+  \item \textbf{Statistical Characteristics:} The stationarity of a time series—constant mean, variance, and covariance—facilitates predictability. Non-stationary series are more challenging due to trends, seasonality, and other instabilities.
+\end{itemize}
+
+Each of these factors contributes to the overall predictability of a time series, with some series being inherently more predictable than others based on these characteristics.
+
+\section{Forecasting}
+
+\section{Chapter 01 Code Analysis}
+
+\lstset{language=Python}
+\begin{lstlisting}[frame=single]
+    ar_value = [self.previous_value[i] * self.ar_param[i] for i in range(len(self.ar_param))]
+    noise = np.random.normal(loc=0.0, scale=self.sigma, size=1)
+    ar_value = np.sum(ar_value) + noise
+    self.previous_value = self.previous_value[1:]+[ar_value[0]]
+    return ar_value
+\end{lstlisting}
+
+\section{Chapter 02 Summary}
+Steps for Acquiring and Processing Time Series Data:
+\begin{enumerate}
+    \item Understanding the time series dataset
+    \item Prepairing the data model
+    \item Handling missing data: Missing data can sometimes be informative, therefore it is important to take this into account in the data generation process
+    \begin{enumerate}
+        \item Last Observation Carried Forward or Forward Fill
+        \item Next Observation Carried Backward of Backward Fill
+        \item Mean Value Fill
+        \item Linear Interpolation
+        \item Nearest Interpolation
+        \item Spline, Polynomial, and Other Interpolations
+    \end{enumerate}
+    \item Converting data into tiime series data
+    \begin{enumerate}
+        \item Time Series Identifiers
+        \item Metadata or Static Features
+        \item Time-Varying Features
+        \item Find the Global End Date
+        \item Basic Preprocessing
+        \item Mapping additional information
+    \end{enumerate}
+    \item Compact, expanded, and wide forms of data
+    \begin{enumerate}
+        \item Wide (useless): We have the date as an index or as one of the columns and the different time series as different columns
+        of the DataFrame. As the number of time series increases, they become wider and wider, hence the
+        name.
+        \item Expanded: is when the time series is expanded along the rows of a DataFrame. If there are
+        n steps in the time series, it occupies n rows in the DataFrame.
+        \item Compact: is when any particular time series occupies only a single row in the pandas
+        DataFrame – that is, the time dimension is managed as an array within a DataFrame row.
+    \end{enumerate}
+    \item Enforcing regular intervals in time series
+    \item 
+\end{enumerate}
+
+
+
+\section{Data Preprocessing}
+\section{Missing Data}
+\section{Chapter 02 Code Analysis}
+\begin{enumerate}
+    \item Week of Year: {df.date.dt.isocalendar().week.iloc[0]} //error in reference to weekofyear
+    \item Why add 4 day to the date range in line 22?
+    \item Resampling is useful for aggregations and degragations
+    \item Difference between y1=df.ISE and y2=df['ISE']?
+    \item 
+\end{enumerate}
+
+This line should be skipped for the code to work
+\lstset{language=Python}
+\begin{lstlisting}[frame=single]
+    df = df.loc["2022-07-07 7:00":"2022-07-07 09:00", "pm2_5_1_hr"]
+    fig = px.line(df, x=df.index, y="pm2_5_1_hr", title="Missing Values in PM2.5")
+    fig = format_plot(fig, ["Original"])
+    fig.write_image("imgs/chapter_2/missing_values.png")
+    fig.show()
+\end{lstlisting}
+
+There is a code error referencing the parent directory
+\begin{lstlisting}[frame=single]
+    os.makedirs("imgs/chapter_2", exist_ok=True)
+    source_data = Path("scripts/data/london_smart_meters/") #scripts is added here
+    block_data_path = source_data/"hhblock_dataset/hhblock_dataset"
+    fig.show()
+\end{lstlisting}
+
+
+\section{Chapter 03 Summary}
+Important topics discussed in chapter
+\begin{enumerate}
+    \item Components of a time series
+    \item Visualizing time series data
+    \item Decomposing a time series
+    \item Detecting and treating outliers
+\end{enumerate}
+
+\subsection{Components of a Time Series}
+The following terms can be mixed in different ways, but two very commonly assumed ways are additive and multiplicative
+\begin{enumerate}
+    \item Trend: is a long-term change in the mean of a time series. It is the smooth and steady movement of
+    a time series in a particular direction.
+    \item Seasonal: When a time series exhibits regular, repetitive, up-and-down fluctuations.
+    \item Cyclical: is often confused with seasonality, but it stands apart due to a very subtle
+    difference. Like seasonality, the cyclical component also exhibits a similar up-and-down pattern around
+    the trend line, but instead of repeating the pattern every period, the cyclical component is irregular.
+    \item Irregular: is left after removing the trends, seasonality, and cyclicity from a time series.
+    Traditionally, this component is considered unpredictable and is also called the residual or error term. (Not completely useless. Can sometimes be explained by an exogenous varibale to a certain extent)
+\end{enumerate}
+
+\subsection{Visualizing Time Series Data}
+\begin{enumerate}
+    \item Line Charts 
+    \item Seasonal (box)Plots 
+    \item Calendar Heatmaps
+    \item Autocorrelation plot
+\end{enumerate}
+
+\subsection{Decomposing a Time Series}
+\subsubsection{Detrending}
+Here we estimate the trend component (which is the smooth change in the time
+series) and remove it from the time series, giving us a detrended time series.
+
+Types:
+\begin{enumerate}
+    \item Moving averages: It can
+    be seen as a window that is moved along the time series in steps, and at each step, the average of all
+    the values in the window is recorded.
+    \item Locally Estimated Scatterplot Smoothing (LOESS) Regression: We use an ordinal variable that moves between the time series as the independent
+    variable and the time series signal as the dependent variable. For each value in the ordinal variable,
+    the algorithm uses a fraction of the closest points and estimates a smoothed trend using only those
+    points in a weighted regression. The weights in the weighted regression are the closest points to the
+    point in question. This is given the highest weight and it decays as we move farther away from it. This
+    gives us a very effective tool for modeling the smooth changes in the time series (trend).
+\end{enumerate}
+
+\subsubsection{Deseasonalizing}
+Here, we estimate the seasonality component from the detrended time series.
+After removing the seasonal component, what is left is the residual.
+
+\begin{enumerate}
+    \item Moving averages: It can
+    be seen as a window that is moved along the time series in steps, and at each step, the average of all
+    the values in the window is recorded.
+    \item Fourier series: Any periodic function, no matter the shape, curve, or
+    absence of it, or how wildly it oscillates around the axis, can be broken down into a series of sine and
+    cosine waves.
+\end{enumerate}
+
+\subsection{Detecting and Treating Outliers}
+An outlier, as its name suggests, is an observation that lies at an abnormal distance from
+the rest of the observations. This can be for many reasons, including faulty measurement
+equipment, incorrect data entry, and black-swan events, to name a few. Being able to detect such
+outliers and treat them may help your forecasting model understand the data better.
+
+Techniques:
+\begin{enumerate}
+    \item Standard Deviation
+    \item Interquartile range
+    \item Isolation Forest 
+    \item Extreme studentized deviate (ESD) and seasonal ESD (S-ESD)
+\end{enumerate}
+
+\section{Decompositon}
+\section{Outliers}
+
+
+\end{document}

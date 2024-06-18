@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Chapter 04}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Setting up a test harness}{3}{}%
+\contentsline {subsubsection}{\numberline {1.1.1}Creating holdout (test) and validation dataset}{3}{}%
+\contentsline {subsubsection}{\numberline {1.1.2}Chossing an evluation metric}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Generating strong baseline forecasts}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Assessing the forecastability of a time series}{4}{}%
+\contentsline {subsection}{\numberline {1.4}Setting a Strong Baseline Forecast}{4}{}%
+\contentsline {section}{\numberline {2}Chapter 05}{4}{}%
+\contentsline {section}{\numberline {3}Chapter 06}{4}{}%
+\contentsline {section}{\numberline {4}Chapter 07}{4}{}%

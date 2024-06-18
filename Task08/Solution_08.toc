@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Chapter 15: Strategies for Global Deep Learning Forecasting Models}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Creating global deep learning forecasting models}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Using time-varying information}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Using static/meta information}{3}{}%
+\contentsline {subsection}{\numberline {1.4}Using the scale of the time series}{4}{}%
+\contentsline {subsection}{\numberline {1.5}Balancing the sampling procedure}{4}{}%
+\contentsline {subsection}{\numberline {1.6}Summary}{5}{}%

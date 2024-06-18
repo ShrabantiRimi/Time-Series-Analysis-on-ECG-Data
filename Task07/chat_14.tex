@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{listings} 
+
+% Global settings for listings
+\lstset{
+    basicstyle=\footnotesize\ttfamily, % Use a small typewriter font
+    breaklines=true,                    % Automatic line breaking
+    breakatwhitespace=false,            % Break lines not only at whitespace
+    frame=single,                       % Frame around the code
+    framesep=2pt,                       % Distance between frame and code
+    framerule=0.5pt                     % Width of the frame
+}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\begin{document}
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{HIS Project - TSA}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Task 07} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+		Jay Asodariya \\
+		}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Chapter 14}
+\subsection{What is attention?}
+In deep learning, attention is a mechanism inspired by human cognitive function. It allows neural networks to dynamically focus on specific parts of input sequences, emphasizing relevant information while de-emphasizing less important parts. This attention mechanism is particularly useful in tasks involving sequences, such as natural language processing and time series analysis. It enables models to weigh different parts of the input sequence differently, enhancing their ability to capture complex relationships and dependencies.
+\subsection{Generalized attention model}
+A generalized attention model is a flexible extension of the traditional attention mechanism in deep learning. It allows for customization in how attention is computed and applied, providing adaptability for different tasks and data characteristics. It enables neural networks to dynamically focus on specific parts of input sequences, enhancing their ability to capture complex relationships and dependencies.
+\subsubsection{Alignment functions}
+There are many variations of the alignment function that have come up over the years. Lets review a
+few popular ones that are used today.
+\begin{itemize}
+    \item \textbf{Dot product:} Simplest alignment function. Measures similarity by taking the dot product of query and key vectors. Requires the same dimensions for query and key vectors.
+    \item \textbf{Scaled dot product attention:} Variation of the dot product with scaling to control the magnitude of the gradients. Mitigates issues with vanishing or exploding gradients.
+    \item \textbf{General attention:} Allows for different weight matrices for query and key vectors. Adds flexibility compared to dot product attention.
+    \item \textbf{Additive/concat attention:} Combines query and key vectors through concatenation followed by a trainable matrix. Introduces non-linearity, enhancing expressive power. Offers another level of flexibility in modeling attention.
+
+\end{itemize}
+
+\subsubsection{Distribution function}
+The distribution function's main purpose is to convert learned scores from the alignment function into weights that sum up to 1. The widely used softmax function accomplishes this, interpreting weights as probabilities. However, softmax has drawbacks, as it assigns some weight to every element, lacking sparsity. Alternatives like sparsemax and entmax address this by allowing probability mass on select relevant elements and assigning zero to others. These functions are useful when knowledge encoding involves only a few timesteps, enhancing interpretability and avoiding implausible options.
+\subsection{Forecasting with sequence-to-sequence models and attention}
+Forecasting with Seq2Seq models and attention involves using neural networks designed for sequential data. The encoder processes historical data, and attention helps the decoder focus on specific information during sequence generation. This approach improves accuracy by capturing complex patterns and dependencies, making it valuable for various forecasting tasks like stock prices or weather predictions.
+\subsection{Transformers – Attention is all you need}
+"Attention Is All You Need" (2017) introduced Transformers, a revolutionary architecture using scaled dot product attention, discarding recurrent networks for more efficiency in processing long sequences. Transformers, highlighted by BERT in 2018, dominate NLP, time series forecasting, reinforcement learning, and computer vision tasks. The original 2017 Transformer architecture remains foundational amid numerous adaptations.
+\subsubsection{Key component of Transformer model}
+\begin{itemize}
+    \item \textbf{Self-attention: }Allows each word in a sequence to focus on other words, capturing relationships and dependencies efficiently.
+    \item \textbf{Multi-headed attention: }Utilizes multiple self-attention mechanisms in parallel, providing the model with diverse perspectives on relationships within the sequence.
+    \item \textbf{Positional encoding: }Incorporates position information into the input embedding, addressing the model's lack of inherent understanding of sequence order.
+    \item \textbf{Position-wise feed-forward layer: }Applies a feed-forward network independently to each position in the sequence, enhancing the model's ability to capture different features.
+\end{itemize}
+\subsubsection{How the component put together}
+\begin{itemize}
+    \item \textbf{Encoder: }The vanilla Transformer model is an encoder-decoder model. There are N blocks of encoders, and each block contains an MHA layer and a position-wise feed-forward layer with residual connections in between.
+    \subitem \textbf{Residual connections: }Introduces shortcut connections that help mitigate the vanishing gradient problem during training.
+    \subitem \textbf{Layer normalization: }Normalizes input to each layer, stabilizing training by reducing internal covariate shift.
+    \item \textbf{Decoder: }The decoder block is also very similar to the encoder block, but with one key addition. Instead of a single self-attention layer, the decoder block has a self-attention layer, which operates on the decoder input, and an encoder-decoder attention layer.  
+    \subitem \textbf{Masked self-attention: }Allows each position to attend to all positions in the decoder up to and including that position, preventing information leakage from future positions.
+\end{itemize}
+\subsection{Forecasting with Transformers}
+Forecasting with Transformers involves using the Transformer architecture for time series prediction. The self-attention mechanism enables the model to capture complex dependencies, and positional encoding addresses sequence order. Trained on historical data, Transformers excel in handling long-range dependencies, making them effective for various forecasting tasks, including stock prices and weather predictions.
+
+\subsection{Summary}
+In recent chapters, we covered fundamental concepts and building blocks of deep learning for time series forecasting, applying them practically using PyTorch. We intentionally postponed attention mechanisms and Transformers for a dedicated chapter. We introduced the generalized attention model, explored specific attention schemes, and seamlessly integrated attention into Seq2Seq models. Transitioning to the Transformer, we adapted its architecture for time-series applications, concluding with training a Transformer model for forecasting on a household sample. This chapter lays the groundwork for using deep learning in time series forecasting. The next chapter will explore the global forecasting model paradigm.
+\end{document}
+

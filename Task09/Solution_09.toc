@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Chapter 17: Multi-Step Forecasting}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Why multi-step forecasting?}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Recursive strategy}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Direct strategy}{3}{}%
+\contentsline {subsection}{\numberline {1.4}Joint strategy}{4}{}%
+\contentsline {subsection}{\numberline {1.5}Hybrid strategies}{4}{}%
+\contentsline {subsubsection}{\numberline {1.5.1}DirRec Strategy}{5}{}%
+\contentsline {subsubsection}{\numberline {1.5.2}Iterative block-wise strategy}{5}{}%
+\contentsline {subsubsection}{\numberline {1.5.3}Rectify Strategy}{5}{}%
+\contentsline {subsubsection}{\numberline {1.5.4}RecJoint}{6}{}%
+\contentsline {subsection}{\numberline {1.6}How to choose a multi-step forecasting strategy}{6}{}%
+\contentsline {subsection}{\numberline {1.7}Summary}{8}{}%

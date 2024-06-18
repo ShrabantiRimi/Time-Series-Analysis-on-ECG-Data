@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{listings} 
+
+% Global settings for listings
+\lstset{
+    basicstyle=\footnotesize\ttfamily, % Use a small typewriter font
+    breaklines=true,                    % Automatic line breaking
+    breakatwhitespace=false,            % Break lines not only at whitespace
+    frame=single,                       % Frame around the code
+    framesep=2pt,                       % Distance between frame and code
+    framerule=0.5pt                     % Width of the frame
+}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\begin{document}
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{HIS Project - TSA}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Task 05} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+		Jay Asodariya \\
+		}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Chapter 13}
+
+\subsection{Tabular regression}
+Tabular regression in time series forecasting involves using structured data arranged in rows and columns to predict future values. This approach applies regression models, such as linear regression or decision trees, to learn patterns from historical data, considering features like past values and external factors. The process includes data preparation, feature engineering, model training, evaluation, and making predictions. The effectiveness depends on the chosen algorithm and the characteristics of the time series data.
+
+\subsection{Single-step-ahead recurrent neural networks}
+Single-step-ahead recurrent neural networks (RNNs) are designed for time series forecasting, predicting the next value in a sequence based on previous values. They use recurrent connections to maintain a memory of past inputs. During training, the model learns patterns in historical data, and after training, it can predict the next value given a sequence of past values. Advanced variants like LSTM and GRU address some limitations of basic RNNs.
+
+\subsection{Sequence-to-sequence models}
+Sequence-to-sequence (Seq2Seq) models are neural networks designed for tasks like language translation and summarization. They consist of an encoder to process input sequences and a decoder to generate output sequences. Attention mechanisms enhance their ability to handle varying-length sequences, making them valuable for tasks with diverse structures.
+\subsubsection{RNN-to-fully connected network}
+Combining an RNN with a fully connected network involves using an RNN to capture sequential patterns and connecting its output to a fully connected layer for further processing or classification. This hybrid architecture is useful for tasks where both sequential and global information are relevant.
+\subsubsection{RNN-to-RNN}
+Connecting one RNN to another, often termed "stacking" or "chaining" RNNs, allows for capturing more complex dependencies in sequential data. This is common in tasks where hierarchical or long-range dependencies are crucial. Each RNN layer processes information sequentially before passing it to the next layer.
+
+\subsection{Summary}
+In the previous chapter, we applied basic deep learning concepts using PyTorch for common modeling patterns. We explored RNN, LSTM, and GRU for time series prediction, then delved into Seq2Seq models, combining encoders and decoders. Encoders and decoders can be complex, even mixing convolution and LSTM blocks. We introduced "teacher forcing" for faster training and improved performance. In the next chapter, we'll dive into the popular and attention-grabbing topic of attention and transformers.
+\end{document}

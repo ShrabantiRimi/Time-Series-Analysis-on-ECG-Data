@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{listings} 
+
+% Global settings for listings
+\lstset{
+    basicstyle=\footnotesize\ttfamily, % Use a small typewriter font
+    breaklines=true,                    % Automatic line breaking
+    breakatwhitespace=false,            % Break lines not only at whitespace
+    frame=single,                       % Frame around the code
+    framesep=2pt,                       % Distance between frame and code
+    framerule=0.5pt                     % Width of the frame
+}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\begin{document}
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{HIS Project - TSA}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Task 04} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+		Alberto Mejia Diez \\
+		}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Chapter 04}
+
+\subsection{Setting up a test harness}
+
+\subsubsection{Creating holdout (test) and validation dataset}
+
+As a standard practice, in machine learning, we set aside two parts of the dataset, name them validation
+data and test data, and don’t use them at all to train the model.
+
+\begin{itemize}
+
+    \item \textbf{validation set:} is used in the
+    modeling process to assess the quality of the model. To select between different model classes, tune
+    the hyperparameters, perform feature selection, and so on, we need a dataset.
+    \item \textbf{holdout (test) set:} is like the final
+    test of your chosen model. It tells you how well your model is doing in unseen data.
+
+\end{itemize}
+
+The best practice is to use the most recent part of the dataset as the test data. Additionally, it is advisable to have validation and test datasets of equal size to ensure that the decisions made during the modeling process, based on the validation data, are as applicable as possible to the test data.
+
+\subsubsection{Chossing an evluation metric}
+In time series forecasting
+realm, there are scores of metrics with no real consensus on which ones to use. One of the reasons for
+this overwhelming number of metrics is that no one metric measures every characteristic of a forecast.
+
+\begin{itemize}
+    \item \textbf{Mean Absolute Error (MAE):}
+    \item \textbf{Mean Squared Error (MSE):}
+    \item \textbf{Mean Absolute Scaled Error (MASE):}
+    \item \textbf{Forecast Bias (FB):}
+
+\end{itemize}
+
+\subsection{Generating strong baseline forecasts}
+Time series forecasting has been around since the early 1920s, and through the years, many brilliant
+people have come up with different models, some statistical and some heuristic-based.
+
+Refered to as:
+\begin{itemize}
+    \item Naïve forecast
+    \item Moving average forecast
+    \item Seasonal naive forecast
+    \item Exponential smoothing (ETS)
+    \item Simple exponential smoothing (SES)
+    \item Double exponential smoothing (DES)
+    \item Triple exponential smoothing or Holt -Winters (HW)
+    \item The Autoregressive Integrated Moving Average (ARIMA)
+    \item Theta Forecast
+    \item Fast Fourier Transform forecast
+\end{itemize}
+After performing the aformationed forecasting techniques it is important to remember that a comparison of their performance should be made. Not only with respect to the forecast bias of each technique but also the time elapsed to perform the techniques.
+When the 2-3 top candidates have finally been chosen, the forecasting algorithm can now be used on the validation and test data to assess which is the most adequate. 
+
+
+\subsection{Assessing the forecastability of a time series}
+\subsection{Setting a Strong Baseline Forecast}
+
+
+\section{Chapter 05}
+
+\section{Chapter 06}
+
+\section{Chapter 07}
+
+
+\end{document}

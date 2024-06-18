@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage{listings} 
+
+% Global settings for listings
+\lstset{
+    basicstyle=\footnotesize\ttfamily, % Use a small typewriter font
+    breaklines=true,                    % Automatic line breaking
+    breakatwhitespace=false,            % Break lines not only at whitespace
+    frame=single,                       % Frame around the code
+    framesep=2pt,                       % Distance between frame and code
+    framerule=0.5pt                     % Width of the frame
+}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\begin{document}
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{HIS Project - TSA}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Task 07} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+		Jay Asodariya \\
+		}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Transformer Model }
+\subsection{Encoder-Decoder Transformer Architecture}
+The encoder-decoder transformer architecture can be represented mathematically as follows \\
+E = Encoder(X) \\ 
+D = Decoder(E) \\
+\subsubsection{Encoder Mechanism}
+The encoder mechanism can \\
+    Z = [Q(X), K(X), V(X)] \\
+    H = [ Attention(Z), PositionalEncoding(X) ] \\
+    E = Feedforward(H) \\ \\
+where:
+\begin{itemize}
+    \item $Q$, $K$, and $V$ are matrices representing the query, key, and value vectors, respectively.
+    \item  Attention is a function that computes the attention scores between the query vector and the key vectors.
+    \item PositionalEncoding is a function that adds positional information to the input text.
+    \item Feedforward is a neural network that performs a series of non-linear transformations.
+\end{itemize}
+
+\subsubsection{Decoder Mechanism}
+The decoder mechanism can be represented mathematically as follows: \\
+Y = [Q(Yt), K(Yt), V(Yt)] \\
+M = [MaskedAttention(Z, Yt), DecoderSelfAttention(Yt)] \\
+N = [EncoderDecoderAttention(Z, Yt)] \\
+H = [M, N] \\
+D = Feedforward(H) \\
+Y = Yt + D \\ \\
+where:
+\begin{itemize}
+    \item Yt is the output sequence of tokens at time step t.	
+    \item MaskedAttention is a function that computes the masked attention scores between the query vector and the key vectors, where the attention is masked to prevent the decoder from attending to future tokens in the output sequence.
+    \item DecoderSelfAttention is a function that computes the decoder self-attention scores between the query vector and the key vectors, which allows the decoder to attend to different parts of its output text.
+    \item EncoderDecoderAttention is a function that computes the encoder-decoder attention scores between the query vector and the key vectors, which allows the decoder to attend to the input text.
+    \item Feedforward is a neural network that performs a series of non-linear transformations.
+
+\end{itemize}
+
+\subsection{Attention Mechanism}
+The attention mechanism can be represented mathematically as follows \\
+\[S = Q * K^T ,  \\ 
+A = Softmax(S) , \\
+V = A * V \] \\ 
+where:
+\begin{itemize}
+    \item Y is the set of all possible outputs.
+    \item P(Y) is the probability distribution over the possible outputs.
+    \item D is the output of the decoder.
+\end{itemize}
+
+\subsection{Probabilistic Forecasting}
+Transformer models can be used to generate probabilistic forecasts by using a softmax function to output a probability distribution over the possible outputs. This can be written mathematically as follows \\
+\[P(Y) = Softmax(D) \] 
+where:
+\begin{itemize}
+    \item Y is the set of all possible outputs.
+    \item P(Y) is the probability distribution over the possible outputs.
+    \item D is the output of the decoder.
+\end{itemize}
+
+\subsection{Softmax function}
+The softmax function is a function that is used to convert a vector of real numbers into a vector of probabilities. It is often used in neural networks to normalize the output of a layer before it is passed to the next layer.
+The softmax function can be represented mathematically as follows \\
+
+\[ S = Q \cdot K^T \] \\ 
+where:
+\begin{itemize}
+    \item Z is the vector of real numbers.
+    \item S is the vector of probabilities. 
+\end{itemize}
+
+The softmax function works by taking a vector of real numbers and calculating the exponential of each number. It then divides each number by the sum of the exponentials. This ensures that the sum of the probabilities is equal to 1.
+The softmax function is a very important function in neural networks because it allows the network to learn complex relationships between the inputs and the outputs. It is also used to normalize the output of the network, which helps to prevent the network from overfitting to the training data.
+
+Here is an example of how the softmax function can be used to normalize a vector of real numbers:
+\[ Z = [1, 2, 3] \]
+\[S = e^(Z)/Sum(e^(Z)) \]
+\[S = [2.7183, 7.3891, 20.0855]/30.9505\]
+\[S = [0.0930, 0.2397, 0.6673]\]
+As you can see, the softmax function has normalized the vector of real numbers to a vector of probabilities. The sum of the probabilities is equal to 1.
+
+\subsection{Positional encoding } 
+\subsubsection{Positional Encoding with Sinusoids}
+One common method for positional encoding involves using sinusoidal functions to represent the relative positions of tokens. This approach is widely used in the transformer architecture due to its effectiveness in capturing long-range dependencies between tokens.
+The basic idea behind positional encoding with sinusoidal functions is to add a set of additional vectors to the input representation, where each vector represents a specific position in the sequence. These vectors are typically created using sine and cosine functions, which vary with the position index.
+The specific implementation of positional encoding with sinusoidal functions involves multiplying the input representation by a matrix of positional encoding vectors. This matrix is constructed by generating a set of sine and cosine functions for each position in the sequence. The functions have different frequency and offset values for different positions, allowing the model to capture information about the relative distances between tokens.
+The resulting positional encoding vector is then added to the input representation, effectively embedding the positional information into the model's internal representation of the input sequence.
+The mathematical formulation for positional encoding with sinusoidal functions can be expressed as follows \\
+\[ PE(pos) = sin(pos / (10000^2)) + cos(pos / (10000^2)) \]
+where:
+\begin{itemize}
+    \item PE(pos) is the positional encoding vector for position pos.
+    \item 10000 is the embedding dimension.
+\end{itemize}
+This formulation generates positional encoding vectors with a period of 10,000, which is sufficient for capturing long-range dependencies in natural language sequences.
+
+\subsubsection{Positional Encoding with Learned Parameters}
+While using pre-trained positional encoding vectors is a common approach, there have been studies that explore the use of learned positional encoding parameters. This approach involves introducing additional parameters to the model that are specifically responsible for learning positional information. The parameters are typically learned during the training process, allowing the model to adapt the positional encoding to the specific characteristics of the training data.
+The mathematical formulation for learned positional encoding can be expressed as follows \\
+\[ PE(pos) = W_pos * pos + b_pos \]
+where:
+\begin{itemize}
+    \item PE(pos) is the positional encoding vector for position pos.
+    \item Wpos is the weight matrix for positional encoding.
+    \item bpos is the bias vector for positional encoding.
+\end{itemize}
+
+This formulation allows the model to learn a more adaptive and task-specific representation of positional information.
+
+\subsection{Token} 
+The input sequence of tokens in the transformer model is generated by splitting the input text into individual words or subwords. This process is called tokenization. Tokenization is necessary because the transformer model cannot work with raw text. It needs to process the text as a sequence of tokens, which are then represented as vectors of numbers. \\ \\
+Two main types of tokenization: 
+\begin{itemize}
+    \item byte pair encoding : BPE is a more sophisticated approach that can split words into smaller subwords, which can be helpful for languages with complex morphology.
+    \item Wordpiece is a simpler approach that only splits words into subwords if necessary.
+\end{itemize}
+Once the input text is tokenized, the transformer model can then process it as a sequence of vectors. These vectors are then passed through the encoder and decoder layers, where they are transformed and combined to generate the output sequence of tokens.
+
+\subsection{Data Flow}
+The transformer model takes an input sequence of tokens and passes it through the encoder, which transforms it into a latent representation. The decoder then takes the latent representation and generates an output sequence of tokens. The decoder is able to generate the output sequence by attending to different parts of the input sequence and its own output sequence. \\
+
+The data flow through the transformer model can be mathematically represented as follows: \\ 
+\[ X = InputSequence \]
+\[E = Encoder(X) \]
+\[Z = LatentRepresentation(E) \]
+\[Y = Decoder(Z) \]
+\[OutputSequence = Y \]
+The encoder transforms the input sequence into a latent representation using the encoder layers. The decoder generates the output sequence using the latent representation and the decoder layers.
+
+\subsection{References}
+\begin{itemize}
+    \item Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A., Kaiser, L., & Polosukhin, I. (2017). Attention is All You Need. arXiv preprint arXiv:1706.03762.
+    \item Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning. MIT Press.
+    \item Bishop, C. M. (2006). Pattern recognition and machine learning. Springer.
+
+\end{itemize}
+\end{document}
+

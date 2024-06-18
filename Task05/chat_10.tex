@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{listings} 
+
+% Global settings for listings
+\lstset{
+    basicstyle=\footnotesize\ttfamily, % Use a small typewriter font
+    breaklines=true,                    % Automatic line breaking
+    breakatwhitespace=false,            % Break lines not only at whitespace
+    frame=single,                       % Frame around the code
+    framesep=2pt,                       % Distance between frame and code
+    framerule=0.5pt                     % Width of the frame
+}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\begin{document}
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{HIS Project - TSA}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Task 05} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+		Jay Asodariya \\
+		}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Chapter 10}
+
+\subsection{Why Global Forecasting Models (GFMs)?}
+The need for Global Forecasting Models (GFMs) in forecasting related time series datasets, highlighting shared attributes. Unlike Local Forecasting Models (LFMs), which treat each series independently, GFMs consider all series as originating from a single data generating process, offering more accurate and efficient forecasting. GFMs address drawbacks of LFMs, providing a holistic approach for improved modeling.
+\begin{itemize}
+     \item \textbf{Sample Size:}Stresses the importance of a large dataset for effective GFM training, ensuring a diverse and representative range of information.
+     \item \textbf{Cross-learning:}Utilizes insights from one time series to improve forecasting for another, leveraging interdependencies between related series.
+     \item \textbf{Multi-task learning:}Trains the GFM to handle multiple forecasting tasks simultaneously, capturing common patterns across different time series.
+     \item \textbf{Engineering complexity:}Integrates complex features and relationships into the GFM for more nuanced and accurate forecasts.
+\end{itemize}
+
+\subsection{Creating GFMs}
+Training Global Forecasting Models (GFMs) is straightforward by consolidating related time series into a single dataframe and training a unified model. It's crucial to ensure that all time series in the dataset have the same frequency to maintain performance. The standard framework from Chapter 8, used for Local Forecasting Models, can be adapted for GFMs. Specific adjustments, such as defining FeatureConfig and MissingValueConfig, are made in the notebook to accommodate the global modeling approach for all households in the London Smart Meters dataset.
+
+
+
+\subsection{Strategies to improve GFMs}
+\begin{itemize}
+    \item \textbf{Increasing memory:}Enhances GFM performance by increasing memory capacity, allowing the model to capture longer-term dependencies in the time series
+    \begin{itemize}
+    \item \textbf{Adding more lag features:}Improves forecasting accuracy by incorporating lagged values of the target variable, capturing historical patterns.
+    \item \textbf{Adding rolling features:}Boosts GFM's capability by introducing rolling statistics (e.g., rolling mean) to capture trends and changes in the time series over time.
+    \item \textbf{Adding EWMA(Exponentially Weighted Moving Average ) features:}Introduces Exponentially Weighted Moving Average features, emphasizing recent observations in the time series for improved sensitivity to changes.
+    \end{itemize}
+    
+    \item \textbf{Using time series meta-features:}Incorporates meta-features that provide additional information about the time series, enhancing the model's understanding of underlying patterns.
+    \begin{itemize}
+    \item \textbf{Ordinal encoding and one-hot encoding:}Transforms categorical variables into numerical representations (ordinal encoding) or binary vectors (one-hot encoding) for better model compatibility.
+    \item \textbf{Frequency encoding:}Encodes categorical variables based on their frequency of occurrence, providing the model with information about the distribution of categories.
+    \item \textbf{Target mean encoding:}Utilizes the mean of the target variable for different categories, enriching the model with information about the relationship between categorical features and the target.
+    \end{itemize}
+    \item \textbf{Tuning hyperparameters:}Optimizes GFM performance by fine-tuning hyperparameters through methods such as grid search, random search, or Bayesian optimization.
+    \begin{itemize}
+    \item \textbf{Grid search}
+    \item \textbf{Random search}
+    \item \textbf{Bayesian Optimization}
+    \end{itemize}
+    \item \textbf{Partitioning:}Divides the dataset into subsets for training and validation purposes, enhancing model robustness.
+    \begin{itemize}
+    \item \textbf{Random partitioning:}Splits the data randomly into training and validation sets.
+    \item \textbf{Judgemental partitioning:}Divides the data based on domain knowledge or expert judgment.
+    \item \textbf{Algorithmic partitioning:}Uses algorithmic methods to partition the data based on characteristics or patterns within the time series.
+    \end{itemize}
+    
+
+\end{itemize}
+
+
+\subsection{Bonus – interpretability}
+Interpretability in the context of machine learning and artificial intelligence, defining it as the degree to which a human can understand the cause of a decision. Two approaches to interpretability are transparency, where the model is inherently simple and understandable, and post hoc interpretation, which involves techniques to understand model predictions. Post hoc techniques like permutation feature importance, Shapley values, and LIME are discussed as methods applicable to any machine learning model, including Global Forecasting Models (GFMs).
+
+\end{document}

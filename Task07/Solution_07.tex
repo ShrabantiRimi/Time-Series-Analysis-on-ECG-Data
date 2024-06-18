@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{listings} 
+\usepackage{microtype}
+\usepackage{hyperref}
+
+% Global settings for listings
+\lstset{
+    basicstyle=\footnotesize\ttfamily, % Use a small typewriter font
+    breaklines=true,                    % Automatic line breaking
+    breakatwhitespace=false,            % Break lines not only at whitespace
+    frame=single,                       % Frame around the code
+    framesep=2pt,                       % Distance between frame and code
+    framerule=0.5pt                     % Width of the frame
+}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\begin{document}
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{HIS Project - TSA}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Task 07} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+        Aneeq Ahmad \\
+		}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{CNN - LSTM}
+
+
+\subsection{Convolutional Neural Network (CNN)}
+CNNs play a crucial role in various applications, particularly in computer vision, due to their ability to automatically learn hierarchical features from input data.
+\begin{itemize}
+    \item \textbf{Feature Extraction} automatically extracting hierarchical features from input data. Through a series of convolutional and pooling layers, they learn to recognize low-level features like edges and textures, which progressively combine to form more complex and abstract features\cite{r1}.
+    \item \textbf{Spatial Hierarchies}  helps in building a robust representation of the input.
+    \item \textbf{Translation Invariance} meaning they can recognize patterns regardless of their position in the input. 
+    \item \textbf{Transfer Learning} involves taking a pre-trained CNN and fine-tuning it on a specific dataset, often resulting in improved performance with less training data.
+    \item \textbf{Texture and Pattern Recognition} recognizing textures and patterns in data, making them valuable in tasks where local patterns and structures are essential, such as medical imaging and satellite image analysis\cite{r2}.
+    \item \textbf{Reduced Parameter Sharing} significantly reduces the number of parameters compared to fully connected networks. This parameter efficiency makes CNNs computationally feasible for large-scale image datasets.
+\end{itemize}
+
+\subsection{Combinations}
+Main ways to combine a convolutional neural network (CNN) and a long short-term memory (LSTM) network:
+
+\begin{itemize}
+    \item Use the output of the CNN as the input to the LSTM. This allows the LSTM to learn features from the input data that have been learned by the CNN.
+    \item Use the output of the LSTM as the input to the CNN. This allows the CNN to learn features from the output of the LSTM.
+    \item Use a parallel architecture, where the CNN and LSTM operate on the input data independently, and their outputs are concatenated and passed to the fully connected layer.
+\end{itemize}
+
+\subsection{Classification and forecasting solutions}
+\subsubsection{Classification}
+\begin{itemize}
+    \item \textbf{Image Classification}  learn hierarchical features from images and can automatically extract patterns and shapes. Architectures like AlexNet, VGGNet, and ResNet have been successful in various image classification challenges\cite{r3}.
+    \item \textbf{Transfer Learning for Classification} often leads to improved performance, especially when labeled data is limited.
+    \item \textbf{Spatial Hierarchies in Time Series Data} can be adapted for classification. Each time step becomes a pixel in the "image," and the CNN learns spatial hierarchies of features over time.
+\end{itemize}
+
+\subsubsection{Forecasting}
+\begin{itemize}
+    \item \textbf{1D CNNs for Time Series} can be used for time series data. The operation is applied along the temporal axis, capturing local patterns and dependencies.
+    \item \textbf{Temporal Convolution} learns filters that can identify relevant features over different time scales, making them suitable for forecasting tasks.
+    \item \textbf{Hybrid Models} combining CNNs with recurrent neural networks (RNNs) or long short-term memory networks (LSTMs) are increasingly used for time series forecasting. CNNs can capture local patterns, while RNNs or LSTMs can model temporal dependencies.\cite{r4}
+    \item \textbf{Multivariate Time Series} network can learn patterns and relationships between different variables, enhancing forecasting capabilities.
+    \item \textbf{Feature Learning} powerful feature extractors, automatically learn relevant features from the input data, reducing the need for manual feature engineering.
+\end{itemize}
+
+\subsection{Code}
+\href{https://github.com/mijanr/TimeSeries/blob/master/Time_Series_Classification/cnn_plus_lstm.ipynb}{GitHub reference link}
+
+\subsection{Conclusion}
+Each strategy has advantages and disadvantages of its own, and the optimal option will rely on the particular issue at hand. All things considered, combining CNNs with LSTMs can offer a potent tool for handling a variety of sequence learning problems.
+
+% ---- Bibliography ----
+\bibliographystyle{plain}
+\bibliography{ref}
+
+\end{document}
